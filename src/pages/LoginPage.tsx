@@ -1,72 +1,50 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useNavigate, Link } from "react-router-dom";
 
 const schema = z.object({
-  username: z.string().min(3, "Минимум 3 символа"),
-  password: z.string().min(3, "Минимум 3 символа"),
+  username: z.string().min(3),
+  password: z.string().min(3),
 });
 
 type FormData = z.infer<typeof schema>;
 
 export default function LoginPage() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormData>({ resolver: zodResolver(schema) });
+  const navigate = useNavigate();
+  const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
+    resolver: zodResolver(schema)
+  });
 
   const onSubmit = (data: FormData) => {
     if (
       (data.username === "admin" && data.password === "admin") ||
       (data.username === "test" && data.password === "test")
     ) {
-      alert("Успешный вход!");
+      navigate("/news");
     } else {
       alert("Неверные данные");
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
-      <div className="w-full max-w-md">
-        <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 space-y-6">
-          <div className="text-center">
-            <h1 className="text-3xl font-bold text-gray-800 mb-2">Вход</h1>
-          </div>
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-lg space-y-4">
+        <h1 className="text-2xl font-bold">Вход</h1>
 
-          <div className="space-y-4">
-            <div>
-              <input
-                {...register("username")}
-                placeholder="Имя пользователя"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-              />
-              {errors.username && (
-                <p className="text-red-500 text-sm mt-1">{errors.username.message}</p>
-              )}
-            </div>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <input {...register("username")} placeholder="Имя пользователя" className="w-full border p-2 rounded" />
+          {errors.username && <p className="text-red-500">{errors.username.message}</p>}
 
-            <div>
-              <input
-                {...register("password")}
-                type="password"
-                placeholder="Пароль"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-              />
-              {errors.password && (
-                <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>
-              )}
-            </div>
-          </div>
+          <input {...register("password")} type="password" placeholder="Пароль" className="w-full border p-2 rounded" />
+          {errors.password && <p className="text-red-500">{errors.password.message}</p>}
 
-          <button
-            onClick={handleSubmit(onSubmit)}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition-colors shadow-md hover:shadow-lg"
-          >
-            Войти
-          </button>
-        </div>
+          <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded">Войти</button>
+        </form>
+
+        <p>
+          Нет аккаунта? <Link to="/reg" className="text-blue-500">Зарегистрироваться</Link>
+        </p>
       </div>
     </div>
   );
