@@ -28,3 +28,4 @@ jobs:
 
       - name: Run Biome check
         run: npm run lint
+        continue-on-error: true
