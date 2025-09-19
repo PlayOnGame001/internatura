@@ -1,10 +1,10 @@
+import { lazy, Suspense } from "react";
 import {
+	Navigate,
+	Route,
 	BrowserRouter as Router,
 	Routes,
-	Route,
-	Navigate,
 } from "react-router-dom";
-import { Suspense, lazy } from "react";
 
 const PageNews = lazy(() => import("./pages/PageNews"));
 
