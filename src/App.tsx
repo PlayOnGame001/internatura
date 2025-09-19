@@ -1,4 +1,5 @@
 import { lazy, Suspense } from "react";
+import "./index.css";
 import {
 	Navigate,
 	Route,
@@ -8,17 +9,19 @@ import {
 
 const LoginPage = lazy(() => import("./pages/LoginPage"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage"));
+const NewsPage = lazy(() => import("./pages/PageNews"));
 
 
 export default function App() {
 	return (
 		<Router>
 			<Suspense
-				fallback={<div className="text-center mt-20 text-lg">Загрузка...</div>}>
+				fallback={<div className="text-center mt-20 text-lg">Load...</div>}>
 				<Routes>
 					<Route path="/" element={<Navigate to="/log" />} />
 					<Route path="/log" element={<LoginPage />} />
 					<Route path="/reg" element={<RegisterPage />} />
+					<Route path='news' element={<NewsPage/>}/>
 				</Routes>
 			</Suspense>
 		</Router>

@@ -1,4 +1,3 @@
-// ui/Input.tsx
 import type React from "react";
 import { forwardRef } from "react";
 
@@ -21,8 +20,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 		},
 		ref,
 	) => {
-		const baseClasses =
-			"border rounded px-3 py-2 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-1";
+		const baseClasses = "border rounded-lg px-3 py-2 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-1 text-gray-900 bg-white placeholder-gray-500";
 
 		const variantClasses = {
 			default: "border-gray-300 focus:border-blue-500 focus:ring-blue-500",
@@ -38,10 +36,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 		return (
 			<div className={fullWidth ? "w-full" : ""}>
 				{label && (
-					<label
-						htmlFor={props.id}
-						className="block text-sm font-medium text-gray-700 mb-1"
-					>
+					<label htmlFor={props.id} className="block text-sm font-medium text-gray-700 mb-1">
 						{label}
 					</label>
 				)}

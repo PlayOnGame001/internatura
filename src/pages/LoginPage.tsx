@@ -7,12 +7,12 @@ import { Button, Input } from "../UI";
 const schema = z.object({
 	username: z
 		.string()
-		.min(1, "Имя пользователя обязательно для заполнения")
-		.min(3, "Имя пользователя должно содержать минимум 3 символа"),
+		.min(1, "Username is required")
+		.min(3, "Username must be at least 3 characters long."),
 	password: z
 		.string()
-		.min(1, "Пароль обязателен для заполнения")
-		.min(3, "Пароль должен содержать минимум 3 символа"),
+		.min(1, "Password is required")
+		.min(3, "The password must contain at least 3 characters."),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -38,8 +38,8 @@ export default function LoginPage() {
 	};
 
 	return (
-		<div className="min-h-screen flex items-center justify-center bg-gray-50">
-			<div className="w-full max-w-md bg-white p-8 rounded-lg shadow-lg space-y-6">
+		<div className="min-h-screen flex items-center justify-center">
+			<div className="w-[800px] max-w-md h-[600px] bg-white p-8 rounded-lg shadow-lg space-y-6 flex flex-col">
 				<div className="text-center">
 					<h1 className="text-2xl font-bold text-gray-900">Login</h1>
 					<p className="text-gray-600 mt-2">Log in to your account</p>

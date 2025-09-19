@@ -7,25 +7,25 @@ import { Button, Input } from "../UI";
 const schema = z.object({
 	username: z
 		.string()
-		.min(3, "Имя пользователя должно содержать минимум 3 символа")
-		.max(20, "Имя пользователя не должно превышать 10 символов")
+		.min(3, "Username must be at least 3 characters long.")
+		.max(10, "Username must not exceed 10 characters")
 		.regex(
 			/^[a-zA-Z0-9_]+$/,
-			"Имя пользователя может содержать только буквы, цифры и знак подчеркивания",
+			"The username can only contain letters, numbers and underscores.",
 		),
 	email: z
 		.string()
-		.min(1, "Email обязателен для заполнения")
-		.email("Введите корректный email адрес")
+		.min(1, "Email is required")
+		.email("Please enter a valid email address")
 		.regex(
 			/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-			"Неверный формат email адреса",
+			"Invalid email address format",
 		),
 	password: z
 		.string()
-		.min(4, "Пароль должен содержать минимум 4 символа")
-		.max(10, "Пароль не должен превышать 10 символов")
-		.regex(/\d/, "Пароль должен содержать хотя бы одну цифру"),
+		.min(4, "The password must contain at least 4 characters.")
+		.max(10, "The password must not exceed 10 characters.")
+		.regex(/\d/, "The password must contain at least one number."),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -47,14 +47,14 @@ export default function RegisterPage() {
 	};
 
 	return (
-		<div className="min-h-screen flex items-center justify-center bg-gray-50">
-			<div className="w-full max-w-md bg-white p-8 rounded-lg shadow-lg space-y-6">
+		<div className="min-h-screen flex items-center justify-center ">
+			<div className="w-[800px] max-w-md h-[600px] bg-white p-8 rounded-lg shadow-lg space-y-6 flex flex-col">
 				<div className="text-center">
 					<h1 className="text-2xl font-bold text-gray-900">Registration</h1>
 					<p className="text-gray-600 mt-2">Create new account</p>
 				</div>
 
-				<form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+				<form onSubmit={handleSubmit(onSubmit)} className="space-y-4" noValidate>
 					<Input
 						{...register("username")}
 						label="User name"
