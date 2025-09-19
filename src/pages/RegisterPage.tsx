@@ -26,7 +26,7 @@ export default function RegisterPage() {
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="w-full max-w-md bg-white !p-8 !rounded-lg !shadow-lg !space-y-4">
-        <h1 className="text-2xl font-bold">Регистрация</h1>
+        <h1 className="text-2xl font-bold">Registration</h1>
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-[5px]">
           <input {...register("username")} placeholder="Имя пользователя" className="w-full border p-2 rounded"/>
@@ -38,12 +38,12 @@ export default function RegisterPage() {
           {errors.password && <p className="text-red-500">{errors.password.message}</p>}
 
           <button type="submit" className="w-full bg-green-600 text-white py-2 rounded">
-            Зарегистрироваться
+            Registration
           </button>
         </form>
 
         <p>
-          Есть аккаунт? <Link to="/log" className="text-blue-500">Войти</Link>
+          Have an account? <Link to="/log" className="text-blue-500">Enter</Link>
         </p>
       </div>
     </div>

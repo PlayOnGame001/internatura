@@ -16,34 +16,33 @@ export default function LoginPage() {
     resolver: zodResolver(schema)
   });
 
-  const onSubmit = (data: FormData) => {
+  const onSubmit = ({username, password}: FormData) => {
     if (
-      (data.username === "admin" && data.password === "admin") ||
-      (data.username === "test" && data.password === "test")
+      (username === "admin" && password === "admin") ||
+      (username === "test" && password === "test")
     ) {
-      navigate("/news");
-    } else {
-      alert("Неверные данные");
-    }
+      return navigate("/news");
+    } 
+    return alert("Incorrect data");
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-lg space-y-4">
-        <h1 className="text-2xl font-bold">Вход</h1>
+        <h1 className="text-2xl font-bold">Enter</h1>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <input {...register("username")} placeholder="Имя пользователя" className="w-full border p-2 rounded" />
+          <input {...register("username")} placeholder="User name" className="w-full border p-2 rounded" />
           {errors.username && <p className="text-red-500">{errors.username.message}</p>}
 
-          <input {...register("password")} type="password" placeholder="Пароль" className="w-full border p-2 rounded" />
+          <input {...register("password")} type="password" placeholder="Password" className="w-full border p-2 rounded" />
           {errors.password && <p className="text-red-500">{errors.password.message}</p>}
 
-          <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded">Войти</button>
+          <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded">Enter</button>
         </form>
 
         <p>
-          Нет аккаунта? <Link to="/reg" className="text-blue-500">Зарегистрироваться</Link>
+          No account? <Link to="/reg" className="text-blue-500">Registration</Link>
         </p>
       </div>
     </div>
