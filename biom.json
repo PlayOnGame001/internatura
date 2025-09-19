@@ -1,23 +1,36 @@
 {
-	"formatter": true,
-	"linter": {
-		"enabled": true
-	},
-	"rules": {
-		"semi": ["error", "always"],
-		"quotes": ["error", "double"],
-		"sort-imports": [
-			"error",
-			{
-				"ignoreCase": false,
-				"ignoreDeclarationSort": false,
-				"ignoreMemberSort": false,
-				"memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
-			}
-		],
-		"assist/source/organizeImports": "fixable"
-	},
-	"files": {
-		"ignore": ["tsconfig*.json"]
-	}
+  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "files": {
+    "ignoreUnknown": false,
+    "ignore": ["dist/", "node_modules/", "*.d.ts"]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "tab",
+    "indentWidth": 2,
+    "lineEnding": "lf"
+  },
+  "organizeImports": {
+    "enabled": true
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "a11y": {
+        "useButtonType": "warn"
+      }
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "semicolons": "always"
+    }
+  }
 }
