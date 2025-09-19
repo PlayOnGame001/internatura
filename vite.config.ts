@@ -3,11 +3,11 @@ import { defineConfig } from "vite";
 import svgr from "vite-plugin-svgr";
 
 export default defineConfig({
-  plugins: [
-    react(),
-    svgr({
-      include: "**/*.svg?react",
-      exclude: "**/*.svg",
-    }),
-  ],
+	plugins: [
+		react(),
+		svgr({
+			include: "**/*.svg?react",
+			exclude: "**/*.svg",
+		}),
+	],
 });
