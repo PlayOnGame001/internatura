@@ -2,7 +2,7 @@ import { useState } from "react";
 import NewsIcon from "../assets/react.svg?react";
 import { newsData } from "../data/news";
 import { NewsCard } from "../UI";
-import Banner from "virtual:ads/Banner";
+import Banner from "../UI/banner";
 import type { Bidder } from "../utilits/ad";
 
 export default function PageNews() {

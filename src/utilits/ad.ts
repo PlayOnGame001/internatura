@@ -37,12 +37,17 @@ export function initBannerAd(
         const container = document.getElementById(id);
         if (!container) return;
 
-        if (bids.length > 0) {
-          container.innerHTML = bids[0].ad || "";
-          console.log(`✅ Advertisement rendered for ${id}`, bids[0]);
-        } else {
-          container.innerHTML = `<div style="width:${sizes[0][0]}px;height:${sizes[0][1]}px;background:#f9f9f9;display:flex;align-items:center;justify-content:center;color:#666;">No bids</div>`;
-          console.log(`⚠️ No bids for ${id}`);
+        try {
+          if (bids.length > 0 && bids[0].ad) {
+            window.pbjs.renderAd(container, bids[0].adId);
+            console.log(`✅ Advertisement rendered for ${id}`, bids[0]);
+          } else {
+            container.innerHTML = `<div style="width:${sizes[0][0]}px;height:${sizes[0][1]}px;background:#f9f9f9;display:flex;align-items:center;justify-content:center;color:#666;">No bids</div>`;
+            console.log(`⚠️ No bids for ${id}`);
+          }
+        } catch (e) {
+          console.error("⚠️ Ошибка рендера объявления:", e);
+          container.innerHTML = `<div style="width:${sizes[0][0]}px;height:${sizes[0][1]}px;background:#fdd;display:flex;align-items:center;justify-content:center;color:#900;">Render error</div>`;
         }
       },
     });
