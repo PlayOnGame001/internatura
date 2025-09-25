@@ -67,3 +67,19 @@ export default tseslint.config([
   },
 ])
 ```
+
+## Research: Prebid.js Advertising Module
+
+### 1. Prebid.js Events Observed
+- `bidRequested` – срабатывает при отправке запроса на ставку.
+- `bidResponse` – срабатывает при каждом приходящем bid.
+- `bidWon` – срабатывает, когда ставка выбрана как выигравшая.
+
+### 2. Why BidWon Rendering Sometimes Fails
+- `bidWon` не сработает если блок скрыт или, если не отрендерился adUnit. 
+
+### 3. pbjs.getHighestCpmBids vs pbjs.onEvent('bidResponse')
+- `getHighestCpmBids()` – возвращает массива объектов выйграшной ставки после получения всех ответов, удобно для финального рендера. (c версии 3 и выше обработнные ставки возвращатся не будут)
+- `onEvent('bidResponse')` – срабатывает для каждой ставки, удобно для логирования и аналитики.
+- **Использование:** getHighestCpmBids → рендер рекламы, onEvent → отладка/логи.
+
