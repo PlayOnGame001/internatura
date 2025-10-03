@@ -36,3 +36,5 @@ class EventTracker {
 }
 
 export const tracker = new EventTracker();
+export type { AdEvent };
+
