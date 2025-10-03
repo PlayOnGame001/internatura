@@ -4,7 +4,7 @@ class EventTracker {
   private cache: AdEvent[] = [];
   private maxCacheSize = 20;
   private flushInterval = 5000;
-  private timer: NodeJS.Timeout | null = null;
+  private timer: ReturnType<typeof setInterval> | null = null; // исправлено для браузера
   private enabled = false;
 
   start() {
@@ -37,4 +37,3 @@ class EventTracker {
 
 export const tracker = new EventTracker();
 export type { AdEvent };
-
