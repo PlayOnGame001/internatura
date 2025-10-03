@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { tracker } from "../utilits/EventTracker";
+import { useEffect, useState } from "react";
 
 interface StatsRow {
   id: string;
