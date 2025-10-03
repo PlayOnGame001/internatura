@@ -36,8 +36,7 @@ export default function StatisticPage() {
   });
 
   useEffect(() => {
-    // Тут должен быть fetch с бекенда
-    // setData(await fetchStats());
+    // НАПОМИНАЛКА СЮДА БЕК
     setData(mockData);
   }, []);
 
